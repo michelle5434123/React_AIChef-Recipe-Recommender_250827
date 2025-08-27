@@ -32,15 +32,13 @@ src/
  │   └─ Clauderecipe.jsx
  ├─ image/
  │   └─ chefIcon.png
-.env.sample
+.env(create your own with your AI API)
 ```
 
 
 ## Notes
-- ⚠️ Security Warning: This app currently calls the Anthropic API directly from the browser using
-`VITE_ANTHROPIC_API_KEY`. This means your API key will be exposed to users if deployed online.
-For production, you must build a backend (Node/Express or serverless) to keep your key safe.
-- `.env` should never be committed. Use `.env.sample` instead.
+- ⚠️ This project uses an environment variable to store your Anthropic API key. After cloning the repo, you must create a new `.env` file in the root directory with the contents of `VITE_ANTHROPIC_API_KEY=your_api_key_here` and replace the placeholder with your real API key
+- For development, Vite automatically loads variables starting with `VITE_`.
 - To deploy securely:
   - Build a backend endpoint (`/api/recipes`) that holds the key.
   - Frontend fetches from backend instead of sending requests directly.
@@ -60,7 +58,14 @@ Make sure react, react-dom, and vite are included in your package.json
 ```bash
 npm install
 ```
-### 3. Start the Development Server
+### 3. Configure environment variables
+Create a `.env` file in the project root (don’t commit this file):
+```bash
+VITE_ANTHROPIC_API_KEY=sk-ant-xxxxxxxxxxxxxxxxx
+```
+Replace with your Anthropic API key.
+
+### 4. Start the Development Server
 If you’re using Vite (recommended for this setup):
 ```bash
 npm run dev
